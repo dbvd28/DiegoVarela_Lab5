@@ -80,7 +80,7 @@ public class Super {
 
     @Override
     public String toString() {
-        return "Super{" + "nombre=" + nombre + '}';
+        return  nombre;
     }
     
     

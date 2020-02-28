@@ -18,6 +18,9 @@ public class Villanos {
     private String planeta;
     private String Altura;
 
+    public Villanos() {
+    }
+
     public Villanos(String nombre, int edad, String planeta, String Altura) {
         this.nombre = nombre;
         this.edad = edad;
@@ -67,7 +70,7 @@ public class Villanos {
 
     @Override
     public String toString() {
-        return "Villanos{" + "nombre=" + nombre + '}';
+        return nombre ;
     }
 
     
