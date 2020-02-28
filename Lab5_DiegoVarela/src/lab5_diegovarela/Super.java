@@ -19,6 +19,9 @@ public class Super {
     private String Altura;
     private int atrapados;
 
+    public Super() {
+    }
+
     public Super(String nombre, int edad, String planeta, String Altura, int atrapados) {
         this.nombre = nombre;
         this.edad = edad;

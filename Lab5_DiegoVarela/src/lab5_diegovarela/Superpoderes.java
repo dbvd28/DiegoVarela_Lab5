@@ -14,6 +14,7 @@ public class Superpoderes {
     private String descripcion;
     private String vulnerabilidad;
 
+    
     public Superpoderes(int nivel, String descripcion, String vulnerabilidad) {
         this.nivel = nivel;
         this.descripcion = descripcion;
