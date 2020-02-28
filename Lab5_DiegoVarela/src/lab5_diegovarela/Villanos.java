@@ -17,16 +17,37 @@ public class Villanos {
     private int edad;
     private String planeta;
     private String Altura;
-
+    private int muertes;
+    private String carcel;
     public Villanos() {
     }
 
-    public Villanos(String nombre, int edad, String planeta, String Altura) {
+    public Villanos(String nombre, int edad, String planeta, String Altura, int muertes, String carcel) {
         this.nombre = nombre;
         this.edad = edad;
         this.planeta = planeta;
         this.Altura = Altura;
+        this.muertes = muertes;
+        this.carcel = carcel;
     }
+
+    public int getMuertes() {
+        return muertes;
+    }
+
+    public void setMuertes(int muertes) {
+        this.muertes = muertes;
+    }
+
+    public String getCarcel() {
+        return carcel;
+    }
+
+    public void setCarcel(String carcel) {
+        this.carcel = carcel;
+    }
+
+    
 
     public ArrayList<Superpoderes> getSpoderes() {
         return spoderes;

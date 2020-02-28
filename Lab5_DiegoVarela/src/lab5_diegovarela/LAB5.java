@@ -5,9 +5,13 @@
  */
 package lab5_diegovarela;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -24,7 +28,7 @@ public class LAB5 extends javax.swing.JFrame {
         modelo.addElement("X-men");
         modelo.addElement("Vengadores");
         cb_grupo.setModel(modelo);
-         
+
         DefaultComboBoxModel model = (DefaultComboBoxModel) cb_villano.getModel();
         model.addElement("The Dark Avengers");
         model.addElement("Sinister Six");
@@ -89,6 +93,10 @@ public class LAB5 extends javax.swing.JFrame {
         jt_heroes = new javax.swing.JTree();
         jScrollPane8 = new javax.swing.JScrollPane();
         jt_villanos = new javax.swing.JTree();
+        jLabel34 = new javax.swing.JLabel();
+        sp_muertes = new javax.swing.JSpinner();
+        jLabel35 = new javax.swing.JLabel();
+        tf_acrcel = new javax.swing.JTextField();
         jd_poder = new javax.swing.JDialog();
         jLabel14 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -118,6 +126,12 @@ public class LAB5 extends javax.swing.JFrame {
         popup_eliminar2 = new javax.swing.JPopupMenu();
         jm_agregar = new javax.swing.JMenuItem();
         jm_el = new javax.swing.JMenuItem();
+        popup_sinister = new javax.swing.JPopupMenu();
+        jm_agregars = new javax.swing.JMenuItem();
+        jm_eliminars = new javax.swing.JMenuItem();
+        popup_dark = new javax.swing.JPopupMenu();
+        jm_agregard = new javax.swing.JMenuItem();
+        jm_eliminard = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -202,6 +216,11 @@ public class LAB5 extends javax.swing.JFrame {
         jLabel25.setText("Altura:");
 
         jl_darkavenger.setModel(new DefaultListModel());
+        jl_darkavenger.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_darkavengerMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jl_darkavenger);
 
         jLabel26.setText("Edad:");
@@ -216,6 +235,11 @@ public class LAB5 extends javax.swing.JFrame {
         jLabel27.setText("The Dark Avengers");
 
         jl_sinistersix.setModel(new DefaultListModel());
+        jl_sinistersix.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_sinistersixMouseClicked(evt);
+            }
+        });
         jScrollPane5.setViewportView(jl_sinistersix);
 
         jLabel28.setText("Sinister six");
@@ -229,6 +253,12 @@ public class LAB5 extends javax.swing.JFrame {
         treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Villanos");
         jt_villanos.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane8.setViewportView(jt_villanos);
+
+        jLabel34.setText("Muertes causadas:");
+
+        jLabel35.setText("Carcel:");
+
+        tf_acrcel.setText("                   ");
 
         javax.swing.GroupLayout jd_agregarLayout = new javax.swing.GroupLayout(jd_agregar.getContentPane());
         jd_agregar.getContentPane().setLayout(jd_agregarLayout);
@@ -256,13 +286,46 @@ public class LAB5 extends javax.swing.JFrame {
                             .addComponent(jButton1))
                         .addGap(56, 56, 56)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jd_agregarLayout.createSequentialGroup()
-                        .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jd_agregarLayout.createSequentialGroup()
+                                    .addComponent(jLabel23)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(cb_villano, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
+                                        .addComponent(jLabel25)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tf_altura1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
+                                        .addComponent(jLabel29)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_planeta1))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
+                                        .addGap(7, 7, 7)
+                                        .addComponent(jLabel26)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(sp_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
+                                        .addComponent(jLabel24)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jd_agregarLayout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addComponent(tf_poder1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jd_agregarLayout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel27))
+                                .addComponent(jLabel34)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(sp_muertes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(96, 96, 96)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))
+                    .addGroup(jd_agregarLayout.createSequentialGroup()
+                        .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jd_agregarLayout.createSequentialGroup()
                                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton2)
@@ -270,38 +333,17 @@ public class LAB5 extends javax.swing.JFrame {
                                         .addGap(29, 29, 29)
                                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(46, 46, 46)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(92, 92, 92))
-                    .addGroup(jd_agregarLayout.createSequentialGroup()
-                        .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jd_agregarLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cb_villano, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
-                                    .addComponent(jLabel25)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(tf_altura1))
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel35)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tf_acrcel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
-                                    .addComponent(jLabel29)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tf_planeta1))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
-                                    .addGap(7, 7, 7)
-                                    .addComponent(jLabel26)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(sp_edad1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_agregarLayout.createSequentialGroup()
-                                    .addComponent(jLabel24)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tf_nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jd_agregarLayout.createSequentialGroup()
-                                .addGap(26, 26, 26)
-                                .addComponent(tf_poder1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))))
+                                    .addGap(39, 39, 39)
+                                    .addComponent(jLabel27))))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_agregarLayout.createSequentialGroup()
                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jd_agregarLayout.createSequentialGroup()
@@ -391,8 +433,16 @@ public class LAB5 extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel23)
-                                    .addComponent(cb_villano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_agregarLayout.createSequentialGroup()
+                                    .addComponent(cb_villano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel34)
+                                    .addComponent(sp_muertes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jd_agregarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel35)
+                                    .addComponent(tf_acrcel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jd_agregarLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
@@ -630,6 +680,11 @@ public class LAB5 extends javax.swing.JFrame {
         );
 
         jm_agregararbol.setText("Agregar al arbol");
+        jm_agregararbol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_agregararbolActionPerformed(evt);
+            }
+        });
         popup_eliminar.add(jm_agregararbol);
 
         jm_eliminar.setText("eliminar");
@@ -646,6 +701,11 @@ public class LAB5 extends javax.swing.JFrame {
         popup_eliminar.add(jm_eliminar);
 
         jm_agregar.setText("Agregar al arbol");
+        jm_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_agregarActionPerformed(evt);
+            }
+        });
         popup_eliminar2.add(jm_agregar);
 
         jm_el.setText("Eliminar");
@@ -655,6 +715,28 @@ public class LAB5 extends javax.swing.JFrame {
             }
         });
         popup_eliminar2.add(jm_el);
+
+        jm_agregars.setText("Agregar al arbol\n");
+        popup_sinister.add(jm_agregars);
+
+        jm_eliminars.setText("Eliminar\n");
+        jm_eliminars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_eliminarsActionPerformed(evt);
+            }
+        });
+        popup_sinister.add(jm_eliminars);
+
+        jm_agregard.setText("Agregar al arbol");
+        popup_dark.add(jm_agregard);
+
+        jm_eliminard.setText("Eliminar");
+        jm_eliminard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_eliminardActionPerformed(evt);
+            }
+        });
+        popup_dark.add(jm_eliminard);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -771,6 +853,7 @@ public class LAB5 extends javax.swing.JFrame {
             sp_edad.setValue(20);
             tf_planeta.setText("");
             tf_altura.setText("");
+            sp_muertes.setValue(0);
 
         } else if (((String) cb_grupo.getSelectedItem()).equals("Vengadores")) {
             DefaultListModel modelo = (DefaultListModel) jl_vengadores.getModel();
@@ -801,28 +884,32 @@ public class LAB5 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (((String) cb_villano.getSelectedItem()).equals("The Dark Avengers")) {
             DefaultListModel modelo = (DefaultListModel) jl_xmen.getModel();
-            modelo.addElement(new Super(tf_nombre.getText(), (Integer) sp_edad.getValue(), tf_planeta.getText(), tf_altura.getText(), 0));
+            modelo.addElement(new Villanos(tf_nombre.getText(), (Integer) sp_edad.getValue(), tf_planeta.getText(), tf_altura.getText(), (Integer) sp_muertes.getValue(), tf_acrcel.getText()));
             jl_sinistersix.setModel(modelo);
             tf_nombre1.setText("");
             sp_edad1.setValue(20);
             tf_planeta1.setText("");
             tf_altura1.setText("");
+            sp_muertes.setValue(0);
+            tf_acrcel.setText("");
 
         } else if (((String) cb_villano.getSelectedItem()).equals("Sinister Six")) {
             DefaultListModel modelo = (DefaultListModel) jl_vengadores.getModel();
-            modelo.addElement(new Super(tf_nombre.getText(), (Integer) sp_edad.getValue(), tf_planeta.getText(), tf_altura.getText(), 0));
+            modelo.addElement(new Villanos(tf_nombre.getText(), (Integer) sp_edad.getValue(), tf_planeta.getText(), tf_altura.getText(), (Integer) sp_muertes.getValue(), tf_acrcel.getText()));
             jl_darkavenger.setModel(modelo);
             tf_nombre1.setText("");
             sp_edad1.setValue(20);
             tf_planeta1.setText("");
             tf_altura1.setText("");
+            sp_muertes.setValue(0);
+            tf_acrcel.setText("");
         }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jb_salirpoder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_salirpoder1MouseClicked
         // TODO add your handling code here:
-         jd_poderv.setVisible(false);
-        
+        jd_poderv.setVisible(false);
+
     }//GEN-LAST:event_jb_salirpoder1MouseClicked
 
     private void jb_agregarpoder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_agregarpoder1MouseClicked
@@ -864,32 +951,182 @@ public class LAB5 extends javax.swing.JFrame {
 
     private void jm_eliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jm_eliminarMouseClicked
         // TODO add your handling code here:
-          
+
     }//GEN-LAST:event_jm_eliminarMouseClicked
 
     private void jm_elActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_elActionPerformed
         // TODO add your handling code here:
         if (jl_xmen.getSelectedIndex() >= 0) {
-                DefaultListModel modelo
-                        = (DefaultListModel) jl_xmen.getModel();
-                modelo.remove(jl_xmen.getSelectedIndex());
-                jl_xmen.setModel(modelo);
-                JOptionPane.showMessageDialog(this,
-                        "Eliminado exitosamente");
+            DefaultListModel modelo
+                    = (DefaultListModel) jl_xmen.getModel();
+            modelo.remove(jl_xmen.getSelectedIndex());
+            jl_xmen.setModel(modelo);
+            JOptionPane.showMessageDialog(this,
+                    "Eliminado exitosamente");
         }
     }//GEN-LAST:event_jm_elActionPerformed
 
     private void jm_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_eliminarActionPerformed
         // TODO add your handling code here:
-         if (jl_vengadores.getSelectedIndex() >= 0) {
-                DefaultListModel modelo
-                        = (DefaultListModel) jl_vengadores.getModel();
-                modelo.remove(jl_vengadores.getSelectedIndex());
-                jl_vengadores.setModel(modelo);
-                JOptionPane.showMessageDialog(this,
-                        "Eliminado exitosamente");
+        if (jl_vengadores.getSelectedIndex() >= 0) {
+            DefaultListModel modelo
+                    = (DefaultListModel) jl_vengadores.getModel();
+            modelo.remove(jl_vengadores.getSelectedIndex());
+            jl_vengadores.setModel(modelo);
+            JOptionPane.showMessageDialog(this,
+                    "Eliminado exitosamente");
         }
     }//GEN-LAST:event_jm_eliminarActionPerformed
+
+    private void jm_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_agregarActionPerformed
+        // TODO add your handling code here:
+        if (jl_xmen.getSelectedIndex() >= 0) {
+            DefaultTreeModel modeloARBOL
+                    = (DefaultTreeModel) jt_heroes.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+
+            //obtener la persona a guardar
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) jl_xmen.getModel();
+            String planeta, nombre, altura;
+            int edad, atrapados;
+            edad = ((Super) modeloLISTA.get(
+                    jl_xmen.getSelectedIndex())).
+                    getEdad();
+
+            nombre = ((Super) modeloLISTA.get(
+                    jl_xmen.getSelectedIndex())).
+                    getNombre();
+            atrapados = ((Super) modeloLISTA.get(
+                    jl_xmen.getSelectedIndex())).
+                    getAtrapados();
+            planeta = ((Super) modeloLISTA.get(jl_xmen.getSelectedIndex())).getPlaneta();
+            altura = ((Super) modeloLISTA.get(jl_xmen.getSelectedIndex())).getAltura();
+
+            int centinela = -1;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().
+                        equals("X-men")) {
+                    DefaultMutableTreeNode p
+                            = new DefaultMutableTreeNode(
+                                    new Super(nombre, edad, planeta, altura, atrapados)
+                            );
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    centinela = 1;
+                } //fin if
+            } //fin for  
+
+            if (centinela == -1) {
+                DefaultMutableTreeNode n
+                        = new DefaultMutableTreeNode("X-men");
+                DefaultMutableTreeNode p
+                        = new DefaultMutableTreeNode(
+                                new Super(nombre, edad, planeta, altura, atrapados)
+                        );
+                n.add(p);
+                raiz.add(n);
+            }  // fin if          
+            modeloARBOL.reload();
+        }
+    }//GEN-LAST:event_jm_agregarActionPerformed
+
+    private void jm_agregararbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_agregararbolActionPerformed
+        // TODO add your handling code here:
+        if (jl_vengadores.getSelectedIndex() >= 0) {
+            DefaultTreeModel modeloARBOL
+                    = (DefaultTreeModel) jt_heroes.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+
+            //obtener la persona a guardar
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) jl_vengadores.getModel();
+            String planeta, nombre, altura;
+            int edad, atrapados;
+            edad = ((Super) modeloLISTA.get(
+                    jl_vengadores.getSelectedIndex())).
+                    getEdad();
+
+            nombre = ((Super) modeloLISTA.get(
+                    jl_vengadores.getSelectedIndex())).
+                    getNombre();
+            atrapados = ((Super) modeloLISTA.get(
+                    jl_vengadores.getSelectedIndex())).
+                    getAtrapados();
+            planeta = ((Super) modeloLISTA.get(jl_vengadores.getSelectedIndex())).getPlaneta();
+            altura = ((Super) modeloLISTA.get(jl_vengadores.getSelectedIndex())).getAltura();
+
+            int centinela = -1;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().
+                        equals("Vengador")) {
+                    DefaultMutableTreeNode p
+                            = new DefaultMutableTreeNode(
+                                    new Super(nombre, edad, planeta, altura, atrapados)
+                            );
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    centinela = 1;
+                } //fin if
+            } //fin for  
+
+            if (centinela == -1) {
+                DefaultMutableTreeNode n
+                        = new DefaultMutableTreeNode("Vengador");
+                DefaultMutableTreeNode p
+                        = new DefaultMutableTreeNode(
+                                new Super(nombre, edad, planeta, altura, atrapados)
+                        );
+                n.add(p);
+                raiz.add(n);
+            }  // fin if          
+            modeloARBOL.reload();
+        }
+    }//GEN-LAST:event_jm_agregararbolActionPerformed
+
+    private void jl_darkavengerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_darkavengerMouseClicked
+        // TODO add your handling code here:
+         if (jl_darkavenger.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                popup_dark.show(evt.getComponent(),
+                        evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_darkavengerMouseClicked
+
+    private void jl_sinistersixMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_sinistersixMouseClicked
+        // TODO add your handling code here:
+         if (jl_sinistersix.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                popup_sinister.show(evt.getComponent(),
+                        evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_sinistersixMouseClicked
+
+    private void jm_eliminardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_eliminardActionPerformed
+        // TODO add your handling code here:
+                if (jl_darkavenger.getSelectedIndex() >= 0) {
+            DefaultListModel modelo
+                    = (DefaultListModel) jl_darkavenger.getModel();
+            modelo.remove(jl_darkavenger.getSelectedIndex());
+            jl_darkavenger.setModel(modelo);
+            JOptionPane.showMessageDialog(this,
+                    "Eliminado exitosamente");
+        }
+    }//GEN-LAST:event_jm_eliminardActionPerformed
+
+    private void jm_eliminarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_eliminarsActionPerformed
+        // TODO add your handling code here:
+                if (jl_sinistersix.getSelectedIndex() >= 0) {
+            DefaultListModel modelo
+                    = (DefaultListModel) jl_sinistersix.getModel();
+            modelo.remove(jl_sinistersix.getSelectedIndex());
+            jl_sinistersix.setModel(modelo);
+            JOptionPane.showMessageDialog(this,
+                    "Eliminado exitosamente");
+        }
+    }//GEN-LAST:event_jm_eliminarsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -958,6 +1195,8 @@ public class LAB5 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -986,16 +1225,24 @@ public class LAB5 extends javax.swing.JFrame {
     private javax.swing.JList<String> jl_xmen;
     private javax.swing.JMenuItem jm_agregar;
     private javax.swing.JMenuItem jm_agregararbol;
+    private javax.swing.JMenuItem jm_agregard;
+    private javax.swing.JMenuItem jm_agregars;
     private javax.swing.JMenuItem jm_el;
     private javax.swing.JMenuItem jm_eliminar;
+    private javax.swing.JMenuItem jm_eliminard;
+    private javax.swing.JMenuItem jm_eliminars;
     private javax.swing.JTree jt_heroes;
     private javax.swing.JTree jt_villanos;
+    private javax.swing.JPopupMenu popup_dark;
     private javax.swing.JPopupMenu popup_eliminar;
     private javax.swing.JPopupMenu popup_eliminar2;
+    private javax.swing.JPopupMenu popup_sinister;
     private javax.swing.JSpinner sp_edad;
     private javax.swing.JSpinner sp_edad1;
+    private javax.swing.JSpinner sp_muertes;
     private javax.swing.JTextArea ta_descrip;
     private javax.swing.JTextArea ta_descrip1;
+    private javax.swing.JTextField tf_acrcel;
     private javax.swing.JTextField tf_altura;
     private javax.swing.JTextField tf_altura1;
     private javax.swing.JTextField tf_moratl;
