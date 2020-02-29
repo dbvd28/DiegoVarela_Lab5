@@ -258,6 +258,7 @@ public class LAB5 extends javax.swing.JFrame {
 
         jLabel34.setText("Muertes causadas:");
 
+        jl_carcel.setModel(new DefaultListModel());
         jScrollPane9.setViewportView(jl_carcel);
 
         jTabbedPane1.addTab("Carcel", jScrollPane9);
@@ -1252,17 +1253,55 @@ public class LAB5 extends javax.swing.JFrame {
 
     private void jb_carcelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_carcelMouseClicked
         // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this,"Elija los dos que quiere mandar a la carcel");
      if   (jl_darkavenger.getSelectedIndex() != -1 && jl_xmen.getSelectedIndex()!=-1){
      DefaultListModel mod=(DefaultListModel) jl_carcel.getModel();
          mod.addElement(jl_darkavenger.getSelectedValue());
+         jl_darkavenger.remove(jl_darkavenger.getSelectedIndex());
          jl_carcel.setModel(mod);
      }
         if   (jl_darkavenger.getSelectedIndex() != -1 && jl_vengadores.getSelectedIndex()!=-1){
      DefaultListModel mod=(DefaultListModel) jl_carcel.getModel();
          mod.addElement(jl_darkavenger.getSelectedValue());
+          jl_darkavenger.remove(jl_darkavenger.getSelectedIndex());
          jl_carcel.setModel(mod);
      }
+        if   (jl_sinistersix.getSelectedIndex() != -1 && jl_xmen.getSelectedIndex()!=-1){
+     DefaultListModel mod=(DefaultListModel) jl_carcel.getModel();
+         mod.addElement(jl_sinistersix.getSelectedValue());
+         jl_sinistersix.remove(jl_sinistersix.getSelectedIndex());
+         jl_carcel.setModel(mod);
+     }
+        if   (jl_sinistersix.getSelectedIndex() != -1 && jl_vengadores.getSelectedIndex()!=-1){
+     DefaultListModel mod=(DefaultListModel) jl_carcel.getModel();
+         mod.addElement(jl_sinistersix.getSelectedValue());
+          jl_sinistersix.remove(jl_sinistersix.getSelectedIndex());
+         jl_carcel.setModel(mod);
+     }
+         if   (jl_sinistersix.getSelectedIndex() == -1 && jl_vengadores.getSelectedIndex()!=-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+         if   (jl_sinistersix.getSelectedIndex() == -1 && jl_xmen.getSelectedIndex()!=-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+         if   (jl_darkavenger.getSelectedIndex() == -1 && jl_vengadores.getSelectedIndex()!=-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+          if   (jl_darkavenger.getSelectedIndex() == -1 && jl_xmen.getSelectedIndex()!=-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+           if   (jl_sinistersix.getSelectedIndex() != -1 && jl_vengadores.getSelectedIndex()==-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+         if   (jl_sinistersix.getSelectedIndex() != -1 && jl_xmen.getSelectedIndex()==-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+         if   (jl_darkavenger.getSelectedIndex() != -1 && jl_vengadores.getSelectedIndex()==-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+          if   (jl_darkavenger.getSelectedIndex() != -1 && jl_xmen.getSelectedIndex()==-1){
+         JOptionPane.showMessageDialog(null,"Seleccione un villano y un heroe porfavor");
+         }
+        JOptionPane.showMessageDialog(null,"Se envio al villano a la carcel");
              
                
     }//GEN-LAST:event_jb_carcelMouseClicked
