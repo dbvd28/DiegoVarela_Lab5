@@ -990,6 +990,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar al arbol&#xa;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jm_agregarsActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jm_eliminars">
           <Properties>
@@ -1011,6 +1014,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar al arbol"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jm_agregardActionPerformed"/>
+          </Events>
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="jm_eliminard">
           <Properties>

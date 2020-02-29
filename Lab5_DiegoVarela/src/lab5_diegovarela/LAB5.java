@@ -30,7 +30,7 @@ public class LAB5 extends javax.swing.JFrame {
         cb_grupo.setModel(modelo);
 
         DefaultComboBoxModel model = (DefaultComboBoxModel) cb_villano.getModel();
-        model.addElement("The Dark Avengers");
+        model.addElement("Dark Avengers");
         model.addElement("Sinister Six");
         cb_villano.setModel(model);
 
@@ -717,6 +717,11 @@ public class LAB5 extends javax.swing.JFrame {
         popup_eliminar2.add(jm_el);
 
         jm_agregars.setText("Agregar al arbol\n");
+        jm_agregars.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_agregarsActionPerformed(evt);
+            }
+        });
         popup_sinister.add(jm_agregars);
 
         jm_eliminars.setText("Eliminar\n");
@@ -728,6 +733,11 @@ public class LAB5 extends javax.swing.JFrame {
         popup_sinister.add(jm_eliminars);
 
         jm_agregard.setText("Agregar al arbol");
+        jm_agregard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_agregardActionPerformed(evt);
+            }
+        });
         popup_dark.add(jm_agregard);
 
         jm_eliminard.setText("Eliminar");
@@ -882,10 +892,10 @@ public class LAB5 extends javax.swing.JFrame {
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
-        if (((String) cb_villano.getSelectedItem()).equals("The Dark Avengers")) {
-            DefaultListModel modelo = (DefaultListModel) jl_xmen.getModel();
-            modelo.addElement(new Villanos(tf_nombre.getText(), (Integer) sp_edad.getValue(), tf_planeta.getText(), tf_altura.getText(), (Integer) sp_muertes.getValue(), tf_acrcel.getText()));
-            jl_sinistersix.setModel(modelo);
+        if (((String) cb_villano.getSelectedItem()).equals("Dark Avengers")) {
+            DefaultListModel modelo = (DefaultListModel) jl_darkavenger.getModel();
+            modelo.addElement(new Villanos(tf_nombre1.getText(), (Integer) sp_edad1.getValue(), tf_planeta1.getText(), tf_altura1.getText(), (Integer) sp_muertes.getValue(), tf_acrcel.getText()));
+           jl_darkavenger.setModel(modelo);
             tf_nombre1.setText("");
             sp_edad1.setValue(20);
             tf_planeta1.setText("");
@@ -894,9 +904,9 @@ public class LAB5 extends javax.swing.JFrame {
             tf_acrcel.setText("");
 
         } else if (((String) cb_villano.getSelectedItem()).equals("Sinister Six")) {
-            DefaultListModel modelo = (DefaultListModel) jl_vengadores.getModel();
-            modelo.addElement(new Villanos(tf_nombre.getText(), (Integer) sp_edad.getValue(), tf_planeta.getText(), tf_altura.getText(), (Integer) sp_muertes.getValue(), tf_acrcel.getText()));
-            jl_darkavenger.setModel(modelo);
+            DefaultListModel mod = (DefaultListModel) jl_sinistersix.getModel();
+            mod.addElement(new Villanos(tf_nombre1.getText(), (Integer) sp_edad1.getValue(), tf_planeta1.getText(), tf_altura1.getText(), (Integer) sp_muertes.getValue(), tf_acrcel.getText()));
+            jl_sinistersix.setModel(mod);
             tf_nombre1.setText("");
             sp_edad1.setValue(20);
             tf_planeta1.setText("");
@@ -1127,6 +1137,116 @@ public class LAB5 extends javax.swing.JFrame {
                     "Eliminado exitosamente");
         }
     }//GEN-LAST:event_jm_eliminarsActionPerformed
+
+    private void jm_agregarsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_agregarsActionPerformed
+        // TODO add your handling code here:
+          if (jl_sinistersix.getSelectedIndex() >= 0) {
+            DefaultTreeModel modeloARBOL
+                    = (DefaultTreeModel) jt_villanos.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+
+            //obtener la persona a guardar
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) jl_sinistersix.getModel();
+            String planeta, nombre, altura,carcel;
+            int edad, muertes;
+            edad = ((Villanos) modeloLISTA.get(
+                    jl_sinistersix.getSelectedIndex())).
+                    getEdad();
+
+            nombre = ((Villanos) modeloLISTA.get(
+                    jl_sinistersix.getSelectedIndex())).
+                    getNombre();
+            muertes = ((Villanos) modeloLISTA.get(
+                    jl_sinistersix.getSelectedIndex())).
+                    getMuertes();
+            planeta = ((Villanos) modeloLISTA.get(jl_sinistersix.getSelectedIndex())).getPlaneta();
+            altura = ((Villanos) modeloLISTA.get(jl_sinistersix.getSelectedIndex())).getAltura();
+            carcel=((Villanos) modeloLISTA.get(
+                    jl_sinistersix.getSelectedIndex())).
+                    getCarcel();
+            int centinela = -1;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().
+                        equals("Sinister Six")) {
+                    DefaultMutableTreeNode p
+                            = new DefaultMutableTreeNode(
+                                    new Villanos(nombre, edad, planeta, altura,muertes,carcel)
+                            );
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    centinela = 1;
+                } //fin if
+            } //fin for  
+
+            if (centinela == -1) {
+                DefaultMutableTreeNode n
+                        = new DefaultMutableTreeNode("Sinister Six");
+                DefaultMutableTreeNode p
+                        = new DefaultMutableTreeNode(
+                                new Villanos(nombre, edad, planeta, altura, muertes,carcel)
+                        );
+                n.add(p);
+                raiz.add(n);
+            }  // fin if          
+            modeloARBOL.reload();
+        }
+    }//GEN-LAST:event_jm_agregarsActionPerformed
+
+    private void jm_agregardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_agregardActionPerformed
+        // TODO add your handling code here:
+         if (jl_darkavenger.getSelectedIndex() >= 0) {
+            DefaultTreeModel modeloARBOL
+                    = (DefaultTreeModel) jt_villanos.getModel();
+            DefaultMutableTreeNode raiz
+                    = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+
+            //obtener la persona a guardar
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) jl_darkavenger.getModel();
+            String planeta, nombre, altura,carcel;
+            int edad, muertes;
+            edad = ((Villanos) modeloLISTA.get(
+                    jl_darkavenger.getSelectedIndex())).
+                    getEdad();
+
+            nombre = ((Villanos) modeloLISTA.get(
+                    jl_darkavenger.getSelectedIndex())).
+                    getNombre();
+            muertes = ((Villanos) modeloLISTA.get(
+                    jl_darkavenger.getSelectedIndex())).
+                    getMuertes();
+            planeta = ((Villanos) modeloLISTA.get(jl_darkavenger.getSelectedIndex())).getPlaneta();
+            altura = ((Villanos) modeloLISTA.get(jl_darkavenger.getSelectedIndex())).getAltura();
+            carcel=((Villanos) modeloLISTA.get(
+                    jl_darkavenger.getSelectedIndex())).
+                    getCarcel();
+            int centinela = -1;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().
+                        equals("The Dark Avengers")) {
+                    DefaultMutableTreeNode p
+                            = new DefaultMutableTreeNode(
+                                    new Villanos(nombre, edad, planeta, altura,muertes,carcel)
+                            );
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    centinela = 1;
+                } //fin if
+            } //fin for  
+
+            if (centinela == -1) {
+                DefaultMutableTreeNode n
+                        = new DefaultMutableTreeNode("The Dark Avengers");
+                DefaultMutableTreeNode p
+                        = new DefaultMutableTreeNode(
+                                new Villanos(nombre, edad, planeta, altura, muertes,carcel)
+                        );
+                n.add(p);
+                raiz.add(n);
+            }  // fin if          
+            modeloARBOL.reload();
+        }
+    }//GEN-LAST:event_jm_agregardActionPerformed
 
     /**
      * @param args the command line arguments
