@@ -134,6 +134,8 @@ public class LAB5 extends javax.swing.JFrame {
         popup_dark = new javax.swing.JPopupMenu();
         jm_agregard = new javax.swing.JMenuItem();
         jm_eliminard = new javax.swing.JMenuItem();
+        popup_liberar = new javax.swing.JPopupMenu();
+        jm_liberar = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -259,6 +261,11 @@ public class LAB5 extends javax.swing.JFrame {
         jLabel34.setText("Muertes causadas:");
 
         jl_carcel.setModel(new DefaultListModel());
+        jl_carcel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_carcelMouseClicked(evt);
+            }
+        });
         jScrollPane9.setViewportView(jl_carcel);
 
         jTabbedPane1.addTab("Carcel", jScrollPane9);
@@ -755,6 +762,14 @@ public class LAB5 extends javax.swing.JFrame {
             }
         });
         popup_dark.add(jm_eliminard);
+
+        jm_liberar.setText("Liberar");
+        jm_liberar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jm_liberarActionPerformed(evt);
+            }
+        });
+        popup_liberar.add(jm_liberar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -1266,7 +1281,7 @@ public class LAB5 extends javax.swing.JFrame {
          jl_carcel.setModel(mod);
      }
         if   (jl_sinistersix.getSelectedIndex() != -1 && jl_xmen.getSelectedIndex()!=-1){
-     DefaultListModel mod=(DefaultListModel) jl_carcel.getModel();
+            DefaultListModel mod=(DefaultListModel) jl_carcel.getModel();
          mod.addElement(jl_sinistersix.getSelectedValue());
          jl_sinistersix.remove(jl_sinistersix.getSelectedIndex());
          jl_carcel.setModel(mod);
@@ -1305,6 +1320,28 @@ public class LAB5 extends javax.swing.JFrame {
              
                
     }//GEN-LAST:event_jb_carcelMouseClicked
+
+    private void jl_carcelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_carcelMouseClicked
+        // TODO add your handling code here:
+          if (jl_carcel.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                popup_liberar.show(evt.getComponent(),
+                        evt.getX(), evt.getY());
+            }
+        }
+    }//GEN-LAST:event_jl_carcelMouseClicked
+
+    private void jm_liberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jm_liberarActionPerformed
+        // TODO add your handling code here:
+           if (jl_carcel.getSelectedIndex() >= 0) {
+            DefaultListModel modelo
+                    = (DefaultListModel) jl_carcel.getModel();
+            modelo.remove(jl_carcel.getSelectedIndex());
+            jl_carcel.setModel(modelo);
+            JOptionPane.showMessageDialog(this,
+                    "Liberado exitosamente");
+        }
+    }//GEN-LAST:event_jm_liberarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1412,11 +1449,13 @@ public class LAB5 extends javax.swing.JFrame {
     private javax.swing.JMenuItem jm_eliminar;
     private javax.swing.JMenuItem jm_eliminard;
     private javax.swing.JMenuItem jm_eliminars;
+    private javax.swing.JMenuItem jm_liberar;
     private javax.swing.JTree jt_heroes;
     private javax.swing.JTree jt_villanos;
     private javax.swing.JPopupMenu popup_dark;
     private javax.swing.JPopupMenu popup_eliminar;
     private javax.swing.JPopupMenu popup_eliminar2;
+    private javax.swing.JPopupMenu popup_liberar;
     private javax.swing.JPopupMenu popup_sinister;
     private javax.swing.JSpinner sp_edad;
     private javax.swing.JSpinner sp_edad1;
