@@ -18,17 +18,17 @@ public class Villanos {
     private String planeta;
     private String Altura;
     private int muertes;
-    private String carcel;
+    private boolean carcel;
     public Villanos() {
     }
 
-    public Villanos(String nombre, int edad, String planeta, String Altura, int muertes, String carcel) {
+    public Villanos(String nombre, int edad, String planeta, String Altura, int muertes,boolean carcel) {
         this.nombre = nombre;
         this.edad = edad;
         this.planeta = planeta;
         this.Altura = Altura;
         this.muertes = muertes;
-        this.carcel = carcel;
+        this.carcel=carcel;
     }
 
     public int getMuertes() {
@@ -39,13 +39,14 @@ public class Villanos {
         this.muertes = muertes;
     }
 
-    public String getCarcel() {
+    public boolean isCarcel() {
         return carcel;
     }
 
-    public void setCarcel(String carcel) {
+    public void setCarcel(boolean carcel) {
         this.carcel = carcel;
     }
+
 
     
 
